@@ -1,0 +1,17 @@
+/home/gbwk/code/cours/IGD/TP/ARVR/Parkour/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/GAToUnityCallbacks.h
+/home/gbwk/code/cours/IGD/TP/ARVR/Parkour/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/MacroEnd.h
+/home/gbwk/code/cours/IGD/TP/ARVR/Parkour/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/MacroHeaderBegin.h
+/home/gbwk/code/cours/IGD/TP/ARVR/Parkour/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/MacroSourceBegin.h
+/home/gbwk/code/cours/IGD/TP/ARVR/Parkour/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UGAApplication.h
+/home/gbwk/code/cours/IGD/TP/ARVR/Parkour/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UGAConfiguration.h
+/home/gbwk/code/cours/IGD/TP/ARVR/Parkour/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UGADebug.h
+/home/gbwk/code/cours/IGD/TP/ARVR/Parkour/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UGAEvents.h
+/home/gbwk/code/cours/IGD/TP/ARVR/Parkour/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UGAInput.h
+/home/gbwk/code/cours/IGD/TP/ARVR/Parkour/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UGASoftKeyboard.h
+/home/gbwk/code/cours/IGD/TP/ARVR/Parkour/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UGASoftKeyboardCallbacks.h
+/home/gbwk/code/cours/IGD/TP/ARVR/Parkour/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UGATypes.h
+/home/gbwk/code/cours/IGD/TP/ARVR/Parkour/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UGAVersion.h
+/home/gbwk/code/cours/IGD/TP/ARVR/Parkour/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UnityToGACallbacks.h
+/home/gbwk/code/cours/IGD/TP/ARVR/Parkour/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UnityToGAConfigurationCallbacks.h
+/home/gbwk/code/cours/IGD/TP/ARVR/Parkour/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UnityToGAKeyEventCallbacks.h
+/home/gbwk/code/cours/IGD/TP/ARVR/Parkour/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity/UnityToGAMotionEventCallbacks.h
