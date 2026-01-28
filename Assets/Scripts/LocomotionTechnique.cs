@@ -13,13 +13,24 @@ public class LocomotionTechnique : MonoBehaviour
     [Header("Physics Settings")]
     [SerializeField] LayerMask combinedMask;
     [SerializeField] float maxDistance = 200f;
-    [SerializeField] private float moveMaxSpeed = 25f;
-    [SerializeField] private float pullAcceleration = 5000f;
     [SerializeField] private float damping = 0.1f;
+
+    [Header("Movement Settings")]
+    [SerializeField] private float moveSpeed = 30f;
+    [SerializeField] private float jumpForce = 3f;
+    [SerializeField] private float flyForce = 3f;
+    [SerializeField] private float pullAcceleration = 5000f;
+    [SerializeField] private float moveMaxSpeed = 25f;
+
+    [Header("Eye Transform")]
+    [SerializeField] Transform eyeTransform;
 
     private Rigidbody rb;
     private bool attachedA = false;
     private bool attachedB = false;
+
+    // Movement
+    bool isGrounded;
 
     // Game Mechanism Variables
     public ParkourCounter parkourCounter;
@@ -40,91 +51,98 @@ public class LocomotionTechnique : MonoBehaviour
     void Update()
     {
         // HANDLE LEFT HAND (Anchor A)
-        HandleAnchor(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Button.PrimaryHandTrigger, ref attachedA, anchorPointA, leftController);
+        HandleAnchor(OVRInput.Button.PrimaryIndexTrigger, ref attachedA, anchorPointA, leftController);
 
         // HANDLE RIGHT HAND (Anchor B)
-        HandleAnchor(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Button.PrimaryHandTrigger, ref attachedB, anchorPointB, rightController);
+        HandleAnchor(OVRInput.Button.PrimaryIndexTrigger, ref attachedB, anchorPointB, rightController);
 
         MovePlayer();
 
         // Respawn Logic
         if (OVRInput.Get(OVRInput.Button.Two) || OVRInput.Get(OVRInput.Button.Four))
         {
-            if (parkourCounter.parkourStart) transform.position = parkourCounter.currentRespawnPos;
+            if (parkourCounter && parkourCounter.parkourStart) transform.position = parkourCounter.currentRespawnPos;
         }
+        
+        ApplyVelocityLogic();
     }
 
     // Generic function to handle raycasting for either hand
-    void HandleAnchor(OVRInput.Button shootBtn, OVRInput.Button releaseBtn, ref bool isAttached, GameObject visualPoint, OVRInput.Controller controllerType)
+    void HandleAnchor(OVRInput.Button shootBtn, ref bool isAttached, GameObject visualPoint, OVRInput.Controller controller)
     {
         // 2. Shoot Ray
-        if (!isAttached && OVRInput.GetDown(shootBtn, controllerType))
+        if (OVRInput.GetDown(shootBtn, controller))
         {
-            // Define the origin and direction clearly
-            Vector3 rayOrigin = rb.position;
-            Quaternion orientation = OVRInput.GetLocalControllerRotation(controllerType);
-            Vector3 rayDirection = orientation * Vector3.forward;
-
-            // Visual debug tool (only visible in Scene view during Play mode)
-            Debug.DrawRay(rayOrigin, rayDirection * maxDistance, Color.cyan, 1.0f);
-
-            Ray ray = new Ray(rayOrigin, rayDirection);
-
-            if (Physics.Raycast(ray, out RaycastHit hit, maxDistance, combinedMask))
+            if (!isAttached)
             {
-                visualPoint.transform.position = hit.point;
-                visualPoint.SetActive(true);
-                isAttached = true;
+                Vector3 rayOrigin = rb.position;
+                Quaternion controllerOrientation = OVRInput.GetLocalControllerRotation(controller);
+                Quaternion playerRotation = transform.rotation;
 
-                // Haptic feedback for a successful hit
-                OVRInput.SetControllerVibration(0.1f, 0.1f, controllerType);
-            } else
-            {
-                visualPoint.transform.position = rayOrigin + rayDirection * maxDistance;
-                visualPoint.SetActive(true);
-                isAttached = true;
+                Quaternion combinedRotation = playerRotation * controllerOrientation;
+                Vector3 rayDirection = combinedRotation * Vector3.forward;
 
-                // Haptic feedback for a successful hit
-                OVRInput.SetControllerVibration(0.1f, 0.1f, controllerType);
+                Ray ray = new Ray(rayOrigin, rayDirection);
+
+                if (Physics.Raycast(ray, out RaycastHit hit, maxDistance, combinedMask))
+                {
+                    visualPoint.transform.position = hit.point;
+                    visualPoint.SetActive(true);
+                    isAttached = true;
+                }
             }
+            else
+            {
+                visualPoint.SetActive(false);
+                isAttached = false;
+            }
+
         }
-        // 3. Release
-        else if (isAttached && OVRInput.GetDown(releaseBtn, controllerType))
-        {
-            visualPoint.SetActive(false);
-            isAttached = false;
-        }
+        
     }
 
     void MovePlayer()
     {
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.5f, combinedMask);
         Vector3 totalPullForce = Vector3.zero;
 
-        // Pull toward A
-        if (attachedA)
+        if (attachedA && OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, leftController))
             totalPullForce += (anchorPointA.transform.position - transform.position).normalized * pullAcceleration;
 
-        // Pull toward B
-        if (attachedB)
+        if (attachedB && OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, rightController))
             totalPullForce += (anchorPointB.transform.position - transform.position).normalized * pullAcceleration;
 
-        // Apply Forces
         if (totalPullForce != Vector3.zero)
         {
             rb.AddForce(totalPullForce * Time.deltaTime, ForceMode.Acceleration);
         }
 
-        ApplyVelocityLogic();
+        Vector2 leftThumbstick = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, leftController);
+        Vector3 moveDirection = new Vector3(leftThumbstick.x, 0f, leftThumbstick.y) * moveSpeed;
+        moveDirection = eyeTransform.rotation * moveDirection;
+        rb.AddForce(moveDirection, ForceMode.Acceleration);
+
+
+        if (OVRInput.GetDown(OVRInput.Button.One, leftController) || OVRInput.GetDown(OVRInput.Button.One, rightController))
+        {
+            if (isGrounded)
+            {
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            }
+            else
+            {
+                rb.AddForce(Vector3.up * flyForce, ForceMode.Impulse);
+            }
+        }
     }
 
     void ApplyVelocityLogic()
     {
-        // Cap Speed
         if (rb.linearVelocity.magnitude > moveMaxSpeed)
             rb.linearVelocity = rb.linearVelocity.normalized * moveMaxSpeed;
 
-        // Friction/Damping
-        rb.linearVelocity *= Mathf.Pow(damping, Time.deltaTime);
+        if (isGrounded) rb.linearVelocity *= Mathf.Pow(damping, Time.deltaTime);
+        
     }
 
 

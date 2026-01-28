@@ -985,6 +985,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5f6f9f2d99f1614685515761e9f0e7a, type: 3}
+--- !u!4 &1209531449 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5513086520136723116, guid: 1972fdb2571852e4ea193b6e88742a95,
+    type: 3}
+  m_PrefabInstance: {fileID: 1530514570}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1213352071 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3156629226540747279, guid: 1972fdb2571852e4ea193b6e88742a95,
@@ -1358,10 +1364,30 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3555781734979022420, guid: 1972fdb2571852e4ea193b6e88742a95,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3939779074538259768, guid: 1972fdb2571852e4ea193b6e88742a95,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4518655973480598227, guid: 1972fdb2571852e4ea193b6e88742a95,
         type: 3}
       propertyPath: m_Name
       value: Essentials
+      objectReference: {fileID: 0}
+    - target: {fileID: 4968799150723146492, guid: 1972fdb2571852e4ea193b6e88742a95,
+        type: 3}
+      propertyPath: _snapTurnDegrees
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5004559098178267822, guid: 1972fdb2571852e4ea193b6e88742a95,
+        type: 3}
+      propertyPath: requestBodyTrackingPermissionOnStartup
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6068931881314952535, guid: 1972fdb2571852e4ea193b6e88742a95,
         type: 3}
@@ -1451,7 +1477,7 @@ PrefabInstance:
     - target: {fileID: 8075063601302210631, guid: 1972fdb2571852e4ea193b6e88742a95,
         type: 3}
       propertyPath: damping
-      value: 0.5
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8075063601302210631, guid: 1972fdb2571852e4ea193b6e88742a95,
         type: 3}
@@ -1462,6 +1488,11 @@ PrefabInstance:
         type: 3}
       propertyPath: jumpForce
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8075063601302210631, guid: 1972fdb2571852e4ea193b6e88742a95,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8075063601302210631, guid: 1972fdb2571852e4ea193b6e88742a95,
         type: 3}
@@ -1480,8 +1511,13 @@ PrefabInstance:
       objectReference: {fileID: 444265765}
     - target: {fileID: 8075063601302210631, guid: 1972fdb2571852e4ea193b6e88742a95,
         type: 3}
+      propertyPath: eyeTransform
+      value: 
+      objectReference: {fileID: 1209531449}
+    - target: {fileID: 8075063601302210631, guid: 1972fdb2571852e4ea193b6e88742a95,
+        type: 3}
       propertyPath: moveMaxSpeed
-      value: 10
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8075063601302210631, guid: 1972fdb2571852e4ea193b6e88742a95,
         type: 3}
@@ -1500,8 +1536,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8075063601302210631, guid: 1972fdb2571852e4ea193b6e88742a95,
         type: 3}
+      propertyPath: lControllPointer
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8075063601302210631, guid: 1972fdb2571852e4ea193b6e88742a95,
+        type: 3}
       propertyPath: pullAcceleration
-      value: 500
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8075063601302210631, guid: 1972fdb2571852e4ea193b6e88742a95,
+        type: 3}
+      propertyPath: rControllPointer
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8075063601302210631, guid: 1972fdb2571852e4ea193b6e88742a95,
         type: 3}
@@ -1528,6 +1574,11 @@ PrefabInstance:
       propertyPath: rightControllerAnchor
       value: 
       objectReference: {fileID: 1213352071}
+    - target: {fileID: 8182055460624664942, guid: 1972fdb2571852e4ea193b6e88742a95,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
