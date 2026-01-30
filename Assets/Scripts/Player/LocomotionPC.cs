@@ -6,9 +6,12 @@ public class LocomotionPC : LocomotionBase
 
     void Update()
     {
+        if (!attachedA) UpdateRayVisual(leftLine);
+        if (!attachedB) UpdateRayVisual(rightLine);
+
         // Left Click = Anchor A, Right Click = Anchor B
-        if (Input.GetMouseButtonDown(0)) ShootRay(ref attachedA, anchorPointA);
-        if (Input.GetMouseButtonDown(1)) ShootRay(ref attachedB, anchorPointB);
+        if (Input.GetMouseButtonDown(0)) ShootRay(ref attachedA, ref anchorPointA, 0);
+        if (Input.GetMouseButtonDown(1)) ShootRay(ref attachedB, ref anchorPointB, 1);
 
         // Space = Jump/Fly
         if (Input.GetKeyDown(KeyCode.Space)) ExecuteJump();
@@ -25,18 +28,40 @@ public class LocomotionPC : LocomotionBase
         ApplyVelocityConstraints();
     }
 
-    void ShootRay(ref bool isAttached, GameObject visual)
+    void ShootRay(ref bool isAttached, ref Vector3 anchorPoint, int rayId)
     {
         if (!isAttached)
         {
-            Ray ray = pcCamera.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit, maxDistance, combinedMask))
+            Vector3 worldOrigin = pcCamera.transform.position;
+            Vector3 dir = pcCamera.transform.rotation * Vector3.forward;
+
+            if (Physics.Raycast(worldOrigin, dir, out RaycastHit hit, maxDistance, combinedMask))
             {
-                visual.transform.position = hit.point;
-                visual.SetActive(true);
+                anchorPoint = hit.point;
                 isAttached = true;
+
+                AttachGrapple(rayId, hit.point);
             }
         }
-        else { visual.SetActive(false); isAttached = false; }
+        else isAttached = false;
+    }
+
+    void UpdateRayVisual(LineRenderer line)
+    {
+        if (line == null) return;
+
+        Vector3 worldOrigin = pcCamera.transform.position;
+        Vector3 dir = pcCamera.transform.rotation * Vector3.forward;
+
+        line.SetPosition(0, worldOrigin);
+
+        if (Physics.Raycast(worldOrigin, dir, out RaycastHit hit, maxDistance, combinedMask))
+        {
+            line.SetPosition(1, hit.point);
+        }
+        else
+        {
+            line.SetPosition(1, worldOrigin + (dir * maxDistance));
+        }
     }
 }
