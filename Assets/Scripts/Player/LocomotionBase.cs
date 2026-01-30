@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using Oculus.Interaction.Input;
 using UnityEngine;
 
@@ -27,7 +28,7 @@ public abstract class LocomotionBase : MonoBehaviour
     public ParkourCounter parkourCounter;
     public SelectionTaskMeasure selectionTaskMeasure;
     public GameObject hmd;
-    public string stage;
+    public string Stage;
 
     // Player Locomotion Variables
     protected Rigidbody rb;
@@ -40,16 +41,28 @@ public abstract class LocomotionBase : MonoBehaviour
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody>();
+
+        // Coins
+        Coin[] coins = FindObjectsByType<Coin>(FindObjectsSortMode.None);
+        foreach (var c in coins) c.Player = this;
+
+        // Banners
+        Banner[] banners = FindObjectsByType<Banner>(FindObjectsSortMode.None);
+        foreach (var b in banners) b.Player = this;
+
+        // Object Interaction Task
+        ObjectInteractionTask[] oits = FindObjectsByType<ObjectInteractionTask>(FindObjectsSortMode.None);
+        foreach (var o in oits) o.Player = this;
     }
 
-    protected void AttachGrapple(int  grappleId, Vector3 hitPoint)
+    protected void AttachGrapple(int grappleId, Vector3 hitPoint)
     {
         if (grappleId == 0)
         {
             currentLengthA = (hitPoint - transform.position).magnitude;
             leftLine.SetPosition(1, hitPoint);
         }
-            if (grappleId == 1)
+        if (grappleId == 1)
         {
             currentLengthB = (hitPoint - transform.position).magnitude;
             rightLine.SetPosition(1, hitPoint);
@@ -138,8 +151,6 @@ public abstract class LocomotionBase : MonoBehaviour
         // These are for the game mechanism.
         if (other.CompareTag("banner"))
         {
-            stage = other.gameObject.name;
-            parkourCounter.isStageChange = true;
         }
         else if (other.CompareTag("objectInteractionTask"))
         {
@@ -156,9 +167,34 @@ public abstract class LocomotionBase : MonoBehaviour
         }
         else if (other.CompareTag("coin"))
         {
-            parkourCounter.coinCount += 1;
-            GetComponent<AudioSource>().Play();
-            other.gameObject.SetActive(false);
         }
+    }
+
+    public void CollideWithBanner(GameObject banner)
+    {
+        Stage = banner.name;
+        parkourCounter.isStageChange = true;
+    }
+
+    public void CollideWithOIT(GameObject objectInteractionTask)
+    {
+        selectionTaskMeasure.isTaskStart = true;
+        selectionTaskMeasure.scoreText.text = "";
+        selectionTaskMeasure.partSumErr = 0f;
+        selectionTaskMeasure.partSumTime = 0f;
+        // rotation: facing the user's entering direction
+        float tempValueY = objectInteractionTask.transform.position.y > 0 ? 12 : 0;
+        Vector3 tmpTarget = new(hmd.transform.position.x, tempValueY, hmd.transform.position.z);
+        selectionTaskMeasure.taskUI.transform.LookAt(tmpTarget);
+        selectionTaskMeasure.taskUI.transform.Rotate(new Vector3(0, 180f, 0));
+        selectionTaskMeasure.taskStartPanel.SetActive(true);
+    }
+
+    public void CollideWithCoin(GameObject coin)
+    {
+        parkourCounter.coinCount += 1;
+        GetComponent<AudioSource>().Play();
+        coin.SetActive(false);
+
     }
 }
