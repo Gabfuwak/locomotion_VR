@@ -38,6 +38,9 @@ public abstract class LocomotionBase : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
+        // Parkour
+        parkourCounter.player = this;
+
         // Coins
         Coin[] coins = FindObjectsByType<Coin>(FindObjectsSortMode.None);
         foreach (var c in coins) c.Player = this;
@@ -175,6 +178,5 @@ public abstract class LocomotionBase : MonoBehaviour
         parkourCounter.coinCount += 1;
         GetComponent<AudioSource>().Play();
         coin.SetActive(false);
-
     }
 }

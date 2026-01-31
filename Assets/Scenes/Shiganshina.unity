@@ -4652,7 +4652,7 @@ PrefabInstance:
     - target: {fileID: 463193194917189906, guid: 5b6a153b65f9d584da517f5e880f5014,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 959194308132378829, guid: 5b6a153b65f9d584da517f5e880f5014,
         type: 3}
@@ -4923,26 +4923,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2046765123}
-    - targetCorrespondingSourceObject: {fileID: 32287947859905842, guid: 5b6a153b65f9d584da517f5e880f5014,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 1536661923759606140, guid: 5b6a153b65f9d584da517f5e880f5014,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 7475903002307480377, guid: 5b6a153b65f9d584da517f5e880f5014,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 143844651231227512, guid: 5b6a153b65f9d584da517f5e880f5014,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 6900738459796153850, guid: 5b6a153b65f9d584da517f5e880f5014,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 5b6a153b65f9d584da517f5e880f5014, type: 3}
 --- !u!1 &771064452 stripped
 GameObject:
@@ -7159,7 +7139,7 @@ PrefabInstance:
     - target: {fileID: 361462524364266998, guid: 34bcb1a76c5901c4b87bbd4b205436a4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -17.099
+      value: -20.21
       objectReference: {fileID: 0}
     - target: {fileID: 361462524364266998, guid: 34bcb1a76c5901c4b87bbd4b205436a4,
         type: 3}
@@ -7206,6 +7186,16 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 666795701226086770, guid: 34bcb1a76c5901c4b87bbd4b205436a4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2705694171638757877, guid: 34bcb1a76c5901c4b87bbd4b205436a4,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 7945508651939939049, guid: 34bcb1a76c5901c4b87bbd4b205436a4,
         type: 3}
       propertyPath: flyForce
@@ -7216,6 +7206,11 @@ PrefabInstance:
       propertyPath: leftLine
       value: 
       objectReference: {fileID: 1950947816}
+    - target: {fileID: 7945508651939939049, guid: 34bcb1a76c5901c4b87bbd4b205436a4,
+        type: 3}
+      propertyPath: gasRefuel
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 7945508651939939049, guid: 34bcb1a76c5901c4b87bbd4b205436a4,
         type: 3}
       propertyPath: jumpForce
@@ -7248,13 +7243,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7945508651939939049, guid: 34bcb1a76c5901c4b87bbd4b205436a4,
         type: 3}
+      propertyPath: gasComsumption
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7945508651939939049, guid: 34bcb1a76c5901c4b87bbd4b205436a4,
+        type: 3}
       propertyPath: parkourCounter
       value: 
       objectReference: {fileID: 1487194127}
     - target: {fileID: 7945508651939939049, guid: 34bcb1a76c5901c4b87bbd4b205436a4,
         type: 3}
       propertyPath: pullAcceleration
-      value: 2000
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 7945508651939939049, guid: 34bcb1a76c5901c4b87bbd4b205436a4,
         type: 3}
@@ -7268,8 +7268,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8658240965858375933, guid: 34bcb1a76c5901c4b87bbd4b205436a4,
         type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658240965858375933, guid: 34bcb1a76c5901c4b87bbd4b205436a4,
+        type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8658240965858375933, guid: 34bcb1a76c5901c4b87bbd4b205436a4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8885782731239130999, guid: 34bcb1a76c5901c4b87bbd4b205436a4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -21391,7 +21406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7283019, g: 0, b: 0, a: 0.48235294}
+  m_Color: {r: 0.7283019, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
