@@ -10,27 +10,27 @@ public class LocomotionVR : LocomotionBase
     {
         base.Update();
 
-        // 1. Ray Visuals
+        // Ray Visuals
         if (!attachedA) UpdateRayVisual(leftLine, GetCtrlWorldPos(leftController), GetCtrlWorldDir(leftController));
         if (!attachedB) UpdateRayVisual(rightLine, GetCtrlWorldPos(rightController), GetCtrlWorldDir(rightController));
 
-        // 2. Grapple Inputs
+        // Grapple Inputs
         if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, leftController))
             HandleGrappleToggle(0, GetCtrlWorldPos(leftController), GetCtrlWorldDir(leftController));
 
         if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, rightController))
             HandleGrappleToggle(1, GetCtrlWorldPos(rightController), GetCtrlWorldDir(rightController));
 
-        // 3. Movement Logic
+        // Movement Logic
         ApplyGrappleLogic(OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, leftController),
                           OVRInput.Get(OVRInput.Button.PrimaryHandTrigger, rightController));
 
-        // 4. Thumbstick & Movement
+        // Thumbstick & Movement
         Vector2 stick = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, leftController);
         Vector3 moveDir = Vector3.ProjectOnPlane(eyeTransform.rotation * new Vector3(stick.x, 0, stick.y), Vector3.up).normalized;
         rb.AddForce(moveDir * moveSpeed, ForceMode.Acceleration);
 
-        // 5. Jump/Fly
+        // Jump/Fly
         if (OVRInput.GetDown(OVRInput.Button.One, leftController) || OVRInput.GetDown(OVRInput.Button.One, rightController)) ExecuteJump();
         if (OVRInput.Get(OVRInput.Button.One, leftController) || OVRInput.Get(OVRInput.Button.One, rightController)) ExecuteFlying();
         else CurrentGas += gasRefuel * Time.deltaTime;

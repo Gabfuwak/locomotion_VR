@@ -26,6 +26,7 @@ public abstract class LocomotionBase : MonoBehaviour
     protected bool isGrounded, isWalled;
     private float currentLengthA, currentLengthB;
     public float CurrentGas = 1.0f;
+    public int CurrentSpeed;
 
     // References for Game Mechanisms
     public ParkourCounter parkourCounter;
@@ -55,6 +56,7 @@ public abstract class LocomotionBase : MonoBehaviour
         isGrounded = Physics.CheckSphere(transform.position + 0.6f * Vector3.down, 0.3f, combinedMask);
         isWalled = Physics.CheckSphere(transform.position, 1.0f, combinedMask);
         CurrentGas = Mathf.Clamp(CurrentGas, 0.0f, 1.0f);
+        CurrentSpeed = (int)(3.6f * rb.linearVelocity.magnitude);
     }
 
     // Logic for shooting or detaching a grapple
