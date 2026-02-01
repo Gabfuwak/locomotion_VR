@@ -60,7 +60,7 @@ public class PlayerCanvas : MonoBehaviour
             damagesImage.color = tempColor;
 
             StartCoroutine(FadeDamagesImage());
-            counter.score -= 5 * damages;
+            counter.score -= damages;
         }
 
         lastSpeed = player.CurrentSpeed;

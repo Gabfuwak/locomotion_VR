@@ -47,7 +47,7 @@ public class MenuCanva : MonoBehaviour
                     Resume();
                     break;
                 case 4:
-                    SceneManager.LoadScene(0);
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                     break;
                 default: break;
             }

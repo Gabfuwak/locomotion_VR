@@ -119,7 +119,7 @@ public class ParkourCounter : MonoBehaviour
                 timeTextGO.SetActive(false);
                 coinTextGO.SetActive(false);
                 recordTextGO.SetActive(false);
-                score += coinCount - 0.2f * timeCounter;
+                score += coinCount - 0.1f * timeCounter;
                 endTextGO.SetActive(true);
                 endTextGO.GetComponent<TMP_Text>().text = "Parkour Finished with score " + ((int)score).ToString("F1") + " !\n" + recordText.text +
                     "\ntotal: " + timeCounter.ToString("F1") + ", " + coinCount.ToString() + "/64";
