@@ -29,6 +29,7 @@ public class ParkourCounter : MonoBehaviour
     private float part2Time;
     private float part3Time;
     public int coinCount;
+    public float score = 0.0f;
     
     private int part1Count; // 17
     private int part2Count; // 33
@@ -91,7 +92,7 @@ public class ParkourCounter : MonoBehaviour
                 part1Time = timeCounter;
                 part1Count = coinCount;
                 currentRespawnPos = first2SecondRespawn.position;
-                UpdateRecordText(1, part1Time, part1Count, 16);
+                UpdateRecordText(1, part1Time, part1Count, 17);
             }
             else if (player.Stage == secondBanner.name)
             {
@@ -114,13 +115,14 @@ public class ParkourCounter : MonoBehaviour
                 objIX3.SetActive(false);
                 part3Time = timeCounter - (part1Time + part2Time);
                 part3Count = coinCount - (part1Count + part2Count);
-                UpdateRecordText(3, part3Time, part3Count, 23);
+                UpdateRecordText(3, part3Time, part3Count, 17);
                 timeTextGO.SetActive(false);
                 coinTextGO.SetActive(false);
                 recordTextGO.SetActive(false);
+                score += coinCount - 0.2f * timeCounter;
                 endTextGO.SetActive(true);
-                endTextGO.GetComponent<TMP_Text>().text = "Parkour Finished!\n" + recordText.text +
-                    "\ntotal: " + timeCounter.ToString("F1") + ", " + coinCount.ToString() + "/69";
+                endTextGO.GetComponent<TMP_Text>().text = "Parkour Finished with score " + ((int)score).ToString("F1") + " !\n" + recordText.text +
+                    "\ntotal: " + timeCounter.ToString("F1") + ", " + coinCount.ToString() + "/64";
                 Debug.Log(endTextGO.GetComponent<TMP_Text>().text);
                 endSoundEffect.Play();
             }

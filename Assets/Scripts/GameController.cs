@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour
     [SerializeField] MenuCanva menu;
     [SerializeField] LocomotionBase player;
 
-    public State CurrentState = State.Pause;
+    public State CurrentState = State.FreeRoam;
 
 
     public static GameController i;

@@ -13,7 +13,14 @@ public class PlayerCanvas : MonoBehaviour
     [SerializeField] Color fullGaugeColor;
     [SerializeField] Color emptyGaugeColor;
 
+
+    private ParkourCounter counter;
     private int lastSpeed = 0;
+
+    private void Awake()
+    {
+        counter = FindFirstObjectByType<ParkourCounter>();
+    }
 
     private void Update()
     {
@@ -53,6 +60,7 @@ public class PlayerCanvas : MonoBehaviour
             damagesImage.color = tempColor;
 
             StartCoroutine(FadeDamagesImage());
+            counter.score -= 5 * damages;
         }
 
         lastSpeed = player.CurrentSpeed;
