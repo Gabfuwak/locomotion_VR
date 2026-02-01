@@ -13,7 +13,12 @@ public class MenuCanva : MonoBehaviour
 
     int currentSelection = 0;
 
-    int numOption = 5;
+    int numOption;
+
+    private void Awake()
+    {
+        numOption = buttons.Count;
+    }
 
 
     public void HandleUpdate()
@@ -48,6 +53,10 @@ public class MenuCanva : MonoBehaviour
                     break;
                 case 4:
                     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                    break;
+                case 5:
+                    int nextSceneIndex = (SceneManager.GetActiveScene().buildIndex == 0) ? 1 : 0;
+                    SceneManager.LoadScene(nextSceneIndex);
                     break;
                 default: break;
             }

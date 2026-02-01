@@ -8753,6 +8753,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4230124683197278910, guid: e332ec43d64c7f24d954f8dc0cf8e106,
+        type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 1740634f6b16c654691d291e45ea63e3, type: 3}
+    - target: {fileID: 4588489314472619926, guid: e332ec43d64c7f24d954f8dc0cf8e106,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7115269288133123253, guid: e332ec43d64c7f24d954f8dc0cf8e106,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8823,6 +8833,56 @@ PrefabInstance:
       propertyPath: m_Name
       value: essentials
       objectReference: {fileID: 0}
+    - target: {fileID: 8749796562874420047, guid: e332ec43d64c7f24d954f8dc0cf8e106,
+        type: 3}
+      propertyPath: objIX1
+      value: 
+      objectReference: {fileID: 611010984}
+    - target: {fileID: 8749796562874420047, guid: e332ec43d64c7f24d954f8dc0cf8e106,
+        type: 3}
+      propertyPath: objIX2
+      value: 
+      objectReference: {fileID: 969188931}
+    - target: {fileID: 8749796562874420047, guid: e332ec43d64c7f24d954f8dc0cf8e106,
+        type: 3}
+      propertyPath: objIX3
+      value: 
+      objectReference: {fileID: 741217363}
+    - target: {fileID: 8749796562874420047, guid: e332ec43d64c7f24d954f8dc0cf8e106,
+        type: 3}
+      propertyPath: finalCoins
+      value: 
+      objectReference: {fileID: 249633239}
+    - target: {fileID: 8749796562874420047, guid: e332ec43d64c7f24d954f8dc0cf8e106,
+        type: 3}
+      propertyPath: firstCoins
+      value: 
+      objectReference: {fileID: 833142669}
+    - target: {fileID: 8749796562874420047, guid: e332ec43d64c7f24d954f8dc0cf8e106,
+        type: 3}
+      propertyPath: finalBanner
+      value: 
+      objectReference: {fileID: 1749370684}
+    - target: {fileID: 8749796562874420047, guid: e332ec43d64c7f24d954f8dc0cf8e106,
+        type: 3}
+      propertyPath: firstBanner
+      value: 
+      objectReference: {fileID: 100572341}
+    - target: {fileID: 8749796562874420047, guid: e332ec43d64c7f24d954f8dc0cf8e106,
+        type: 3}
+      propertyPath: secondCoins
+      value: 
+      objectReference: {fileID: 850736139}
+    - target: {fileID: 8749796562874420047, guid: e332ec43d64c7f24d954f8dc0cf8e106,
+        type: 3}
+      propertyPath: startBanner
+      value: 
+      objectReference: {fileID: 1916314528}
+    - target: {fileID: 8749796562874420047, guid: e332ec43d64c7f24d954f8dc0cf8e106,
+        type: 3}
+      propertyPath: secondBanner
+      value: 
+      objectReference: {fileID: 1436889957}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
