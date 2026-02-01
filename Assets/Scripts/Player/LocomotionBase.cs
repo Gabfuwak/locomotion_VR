@@ -51,13 +51,11 @@ public abstract class LocomotionBase : MonoBehaviour
         // Coins
         Coin[] coins = FindObjectsByType<Coin>(FindObjectsSortMode.None);
         foreach (var c in coins) c.Player = this;
-
-        // Banners
-        Banner[] banners = FindObjectsByType<Banner>(FindObjectsSortMode.None);
+        // Banners
+        Banner[] banners = FindObjectsByType<Banner>(FindObjectsSortMode.None);
         foreach (var b in banners) b.Player = this;
-
-        // Object Interaction Task
-        ObjectInteractionTask[] oits = FindObjectsByType<ObjectInteractionTask>(FindObjectsSortMode.None);
+        // Object Interaction Task
+        ObjectInteractionTask[] oits = FindObjectsByType<ObjectInteractionTask>(FindObjectsSortMode.None);
         foreach (var o in oits) o.Player = this;
     }
 
@@ -180,8 +178,8 @@ public abstract class LocomotionBase : MonoBehaviour
         selectionTaskMeasure.scoreText.text = "";
         selectionTaskMeasure.partSumErr = 0f;
         selectionTaskMeasure.partSumTime = 0f;
-        // rotation: facing the user's entering direction
-        float tempValueY = objectInteractionTask.transform.position.y > 0 ? 12 : 0;
+        // rotation: facing the user's entering direction
+        float tempValueY = objectInteractionTask.transform.position.y > 0 ? 12 : 0;
         Vector3 tmpTarget = new(hmd.transform.position.x, tempValueY, hmd.transform.position.z);
         selectionTaskMeasure.taskUI.transform.LookAt(tmpTarget);
         selectionTaskMeasure.taskUI.transform.Rotate(new Vector3(0, 180f, 0));
