@@ -6,9 +6,9 @@ public class LocomotionVR : LocomotionBase
     private OVRInput.Controller leftController = OVRInput.Controller.LTouch;
     private OVRInput.Controller rightController = OVRInput.Controller.RTouch;
 
-    protected override void Update()
+    public override void HandleUpdate()
     {
-        base.Update();
+        base.HandleUpdate();
 
         // Ray Visuals
         if (!attachedA) UpdateRayVisual(leftLine, GetCtrlWorldPos(leftController), GetCtrlWorldDir(leftController));

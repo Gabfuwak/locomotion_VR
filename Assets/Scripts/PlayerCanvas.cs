@@ -22,19 +22,8 @@ public class PlayerCanvas : MonoBehaviour
 
         speedtext.text = $"{player.CurrentSpeed} km/h";
 
-        float damages = Mathf.Abs(0.03f * (player.CurrentSpeed - lastSpeed)) - 1;
+        if (player.CurrentDifficulty == Difficulty.Hard) HandleFallDamages();
 
-        if (damages > 0)
-        {
-
-            Color tempColor = damagesImage.color;
-            tempColor.a = Mathf.Clamp01(damages);
-            damagesImage.color = tempColor;
-
-            StartCoroutine(FadeDamagesImage());
-        }
-
-        lastSpeed = player.CurrentSpeed;
     }
 
     private IEnumerator FadeDamagesImage()
@@ -50,5 +39,22 @@ public class PlayerCanvas : MonoBehaviour
 
         tempColor.a = 0;
         damagesImage.color = tempColor;
+    }
+
+    void HandleFallDamages()
+    {
+        float damages = Mathf.Abs(0.03f * (player.CurrentSpeed - lastSpeed)) - 1;
+
+        if (damages > 0)
+        {
+
+            Color tempColor = damagesImage.color;
+            tempColor.a = Mathf.Clamp01(damages);
+            damagesImage.color = tempColor;
+
+            StartCoroutine(FadeDamagesImage());
+        }
+
+        lastSpeed = player.CurrentSpeed;
     }
 }

@@ -4,9 +4,9 @@ public class LocomotionPC : LocomotionBase
 {
     [SerializeField] private Camera pcCamera;
 
-    protected override void Update()
+    public override void HandleUpdate()
     {
-        base.Update();
+        base.HandleUpdate();
 
         Vector3 camPos = pcCamera.transform.position;
         Vector3 camDir = pcCamera.transform.forward;

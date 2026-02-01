@@ -136,8 +136,10 @@ public class ParkourCounter : MonoBehaviour
 
     void UpdateRecordText(int part, float time, int coinsCount, int coinsInPart)
     {
-        string newRecords = "loco" + part.ToString() + ": " + time.ToString("F1") + ", " + coinsCount + "/" + coinsInPart + "\n" +
-                            "obj"  + part.ToString() + ": " + (selectionTaskMeasure.partSumTime/5f).ToString("F1") + "," + (selectionTaskMeasure.partSumErr/5).ToString("F2");
+        //string newRecords = "loco" + part.ToString() + ": " + time.ToString("F1") + ", " + coinsCount + "/" + coinsInPart + "\n" +
+        //                    "obj"  + part.ToString() + ": " + (selectionTaskMeasure.partSumTime/5f).ToString("F1") + "," + (selectionTaskMeasure.partSumErr/5).ToString("F2");
+
+        string newRecords = "loco" + part.ToString() + ": " + time.ToString("F1") + ", " + coinsCount + "/" + coinsInPart;
         recordText.text = recordText.text + "\n" + newRecords;
     }
 }

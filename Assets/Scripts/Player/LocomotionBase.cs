@@ -1,5 +1,10 @@
 using UnityEngine;
 
+public enum Difficulty
+{
+    Easy, Normal, Hard
+}
+
 public abstract class LocomotionBase : MonoBehaviour
 {
     [Header("Physics Settings")]
@@ -19,6 +24,8 @@ public abstract class LocomotionBase : MonoBehaviour
     [Header("Visuals")]
     [SerializeField] protected LineRenderer leftLine;
     [SerializeField] protected LineRenderer rightLine;
+
+    public Difficulty CurrentDifficulty = Difficulty.Normal;
 
     protected Vector3 anchorPointA, anchorPointB;
     protected Rigidbody rb;
@@ -54,7 +61,7 @@ public abstract class LocomotionBase : MonoBehaviour
         foreach (var o in oits) o.Player = this;
     }
 
-    protected virtual void Update()
+    public virtual void HandleUpdate()
     {
         isGrounded = Physics.CheckSphere(transform.position + 0.6f * Vector3.down, 0.3f, combinedMask);
         isWalled = Physics.CheckSphere(transform.position, 1.0f, combinedMask);
@@ -75,9 +82,17 @@ public abstract class LocomotionBase : MonoBehaviour
             {
                 anchor = hit.point;
                 attached = true;
-                if (id == 0) currentLengthA = (hit.point - transform.position).magnitude;
-                else currentLengthB = (hit.point - transform.position).magnitude;
-                line.SetPosition(1, hit.point);
+                if (id == 0) currentLengthA = (anchor - transform.position).magnitude;
+                else currentLengthB = (anchor - transform.position).magnitude;
+                line.SetPosition(1, anchor);
+            }
+             else if (CurrentDifficulty == Difficulty.Easy)
+            {
+                anchor = origin + maxDistance * direction;
+                attached = true;
+                if (id == 0) currentLengthA = (anchor - transform.position).magnitude;
+                else currentLengthB = (anchor - transform.position).magnitude;
+                line.SetPosition(1, anchor);
             }
         }
         else attached = false;
