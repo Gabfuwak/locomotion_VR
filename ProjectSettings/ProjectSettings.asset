@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: VRParkour
+  productName: RollABall
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -145,6 +145,9 @@ PlayerSettings:
   bundleVersion: 0.1
   preloadedAssets:
   - {fileID: 11400000, guid: 42289028ac6b68b48bf2f57010993ada, type: 2}
+  - {fileID: -23687297352731625, guid: d4d075abc73c05849bc966fc4a64228d, type: 2}
+  - {fileID: 11400000, guid: 853b3cf7745111f44a5a7e2c23b991d2, type: 2}
+  - {fileID: 4777640281598755956, guid: 9930d5c80f7d31641808c606f8a49eb7, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -166,7 +169,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   androidMinAspectRatio: 1
   applicationIdentifier:
-    Android: com.DefaultCompany.VRParkour
+    Android: com.DefaultCompany.RollABall
     Standalone: com.DefaultCompany.VRParkour
   buildNumber:
     Standalone: 0
