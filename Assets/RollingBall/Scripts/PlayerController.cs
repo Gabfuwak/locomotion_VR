@@ -75,7 +75,7 @@ public class RollingBallPlayerController : MonoBehaviour
         {
             gameOver = true;
             gameObject.GetComponent<Renderer>().enabled = false; // Do not destroy it but hide it
-            rb.linearVelocity = new   Vector3(0f, 0f, 0f);
+            rb.linearVelocity = new Vector3(0f, 0f, 0f);
             winObject.SetActive(true);
             winText.text = "You Lose!";
         }

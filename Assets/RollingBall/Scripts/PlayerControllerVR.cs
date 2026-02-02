@@ -32,13 +32,13 @@ public class PlayerControllerVR : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!gameOver)
-        {
+        /*#if (!gameOver)
+        {*/
             // Get input from VR controller thumbstick (left controller)
             Vector2 movementVector = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, leftController);
 
             OnMove(movementVector);
-        }
+        /*}
         else
         {
             // Press A button on either controller to restart
@@ -47,7 +47,7 @@ public class PlayerControllerVR : MonoBehaviour
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
-        }
+        }*/
     }
 
     private void OnMove(Vector2 movementVector)
